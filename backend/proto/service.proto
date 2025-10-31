@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package servicepb;
 
-option go_package = "";
+option go_package = "https://github.com/ManoVikram/AI-Meme-Generator/backend/api/proto";
 
 message SendTopicRequest {
     string topic = 1;
