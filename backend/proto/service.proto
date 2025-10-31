@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package servicepb;
+
+option go_package = "";
+
+message SendTopicRequest {
+    string topic = 1;
+}
+
+message SendTopicResponse {
+    bytes image = 1;
+    string caption = 2;
+    string mime_type = 3;
+}
+
+service AIMemeGeneratorService {
+    rpc SendTopic(SendTopicRequest) returns (SendTopicResponse);
+}
