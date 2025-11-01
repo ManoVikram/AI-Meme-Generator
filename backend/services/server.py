@@ -1,11 +1,12 @@
 import base64
-from concurrent import futures
 import os
-from dotenv import load_dotenv
-import grpc
-from openai import OpenAI
+from concurrent import futures
 
+import grpc
+from dotenv import load_dotenv
+from openai import OpenAI
 from proto import service_pb2, service_pb2_grpc
+
 
 class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
     def encode_image_to_base64(self, image_bytes):
