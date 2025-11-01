@@ -1,3 +1,4 @@
+import base64
 from concurrent import futures
 import os
 from dotenv import load_dotenv
@@ -30,7 +31,20 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
         return response.output_text
 
     def create_meme_image(self, prompt):
-        pass
+        # Step 1 - Initialize OpenAI API client
+        client = OpenAI()
+
+        # Step 2 - Use the Image API to generate an image based on the prompt
+        result = client.images.generate(
+            model="gpt-image-1-mini",
+            prompt=prompt,
+        )
+
+        image_base64 = result.data[0].b64_json
+        image_bytes = base64.b64decode(image_base64)
+
+        # Step 3 - Return the binary image data
+        return image_bytes
 
     def generate_meme_caption(self, image):
         pass
@@ -42,6 +56,7 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
         prompt = self.generate_image_prompt(topic=topic)
 
         # Step 2 - Create meme image from prompt
+        image = self.create_meme_image(prompt=prompt)
 
         # Step 3 - Generate meme caption from image
 
