@@ -2,12 +2,50 @@ from concurrent import futures
 import os
 from dotenv import load_dotenv
 import grpc
+from openai import OpenAI
 
 from proto import service_pb2, service_pb2_grpc
 
 class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
-    def SendTopic(self, request, context):
+    def generate_image_prompt(self, topic):
+        # Step 1 - Initialize OpenAI API client
+        client = OpenAI()
+
+        # Step 2 - Feed the topic to the LLM of choice to generate an image prompt
+        response = client.responses.create(
+            model="gpt-4o-mini",
+            input=[
+                {
+                    "role": "assistant",
+                    "content": "You are a creative meme prompt generator."
+                },
+                {
+                    "role": "user",
+                    "content": f"Generate a creative and funny meme image prompt based on the following topic: '{topic}'. The prompt should be detailed enough for an AI image generator to create an image. Keep it detailed and engaging."
+                }
+            ]
+        )
+
+        # Step 3 - Return the generated image prompt
+        return response.output_text
+
+    def create_meme_image(self, prompt):
         pass
+
+    def generate_meme_caption(self, image):
+        pass
+
+    def GenerateMemeWithTopic(self, request, context):
+        topic = request.topic
+
+        # Step 1 - Generate image prompt from topic
+        prompt = self.generate_image_prompt(topic=topic)
+
+        # Step 2 - Create meme image from prompt
+
+        # Step 3 - Generate meme caption from image
+
+        # Step 4 - Construct and return response
 
 def serve():
     load_dotenv()
