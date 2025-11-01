@@ -8,6 +8,9 @@ from openai import OpenAI
 from proto import service_pb2, service_pb2_grpc
 
 class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
+    def encode_image_to_base64(self, image_bytes):
+        return base64.b64encode(image_bytes).decode('utf-8')
+
     def generate_image_prompt(self, topic):
         # Step 1 - Initialize OpenAI API client
         client = OpenAI()
@@ -47,7 +50,34 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
         return image_bytes
 
     def generate_meme_caption(self, image):
-        pass
+        # Step 1 - Initialize OpenAI API client
+        client = OpenAI()
+
+        # Step 2 - Convert the bytes image to base64 string
+        image_base64 = self.encode_image_to_base64(image)
+
+        # Step 3 - Generate a caption for the meme image using the LLM of choice
+        response = client.responses.create(
+            model="gpt-4o-mini",
+            input=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": "Generate a playful, funny, a little dramatic but not cringe and engaging caption for the meme image provided. No hashtags. No emojis (unless appropriate)."
+                        },
+                        {
+                            "type": "input_image",
+                            "image_url": f"data:image/jpeg;base64,{image_base64}"
+                        }
+                    ]
+                }
+            ]
+        )
+
+        # Step 4 - Return the generated caption
+        return response.output_text
 
     def GenerateMemeWithTopic(self, request, context):
         topic = request.topic
@@ -56,11 +86,17 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
         prompt = self.generate_image_prompt(topic=topic)
 
         # Step 2 - Create meme image from prompt
-        image = self.create_meme_image(prompt=prompt)
+        image_bytes = self.create_meme_image(prompt=prompt)
 
         # Step 3 - Generate meme caption from image
+        caption = self.generate_meme_caption(image=image_bytes)
 
         # Step 4 - Construct and return response
+        return service_pb2.GenerateMemeWithTopicResponse(
+            image=image_bytes,
+            caption=caption,
+            mime_type="image/jpeg"
+        )
 
 def serve():
     load_dotenv()
