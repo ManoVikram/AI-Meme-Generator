@@ -21,27 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type SendTopicRequest struct {
+type GenerateMemeWithTopicRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Topic         string                 `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SendTopicRequest) Reset() {
-	*x = SendTopicRequest{}
+func (x *GenerateMemeWithTopicRequest) Reset() {
+	*x = GenerateMemeWithTopicRequest{}
 	mi := &file_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SendTopicRequest) String() string {
+func (x *GenerateMemeWithTopicRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SendTopicRequest) ProtoMessage() {}
+func (*GenerateMemeWithTopicRequest) ProtoMessage() {}
 
-func (x *SendTopicRequest) ProtoReflect() protoreflect.Message {
+func (x *GenerateMemeWithTopicRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,19 +53,19 @@ func (x *SendTopicRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SendTopicRequest.ProtoReflect.Descriptor instead.
-func (*SendTopicRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateMemeWithTopicRequest.ProtoReflect.Descriptor instead.
+func (*GenerateMemeWithTopicRequest) Descriptor() ([]byte, []int) {
 	return file_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SendTopicRequest) GetTopic() string {
+func (x *GenerateMemeWithTopicRequest) GetTopic() string {
 	if x != nil {
 		return x.Topic
 	}
 	return ""
 }
 
-type SendTopicResponse struct {
+type GenerateMemeWithTopicResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Image         []byte                 `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	Caption       string                 `protobuf:"bytes,2,opt,name=caption,proto3" json:"caption,omitempty"`
@@ -74,20 +74,20 @@ type SendTopicResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SendTopicResponse) Reset() {
-	*x = SendTopicResponse{}
+func (x *GenerateMemeWithTopicResponse) Reset() {
+	*x = GenerateMemeWithTopicResponse{}
 	mi := &file_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SendTopicResponse) String() string {
+func (x *GenerateMemeWithTopicResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SendTopicResponse) ProtoMessage() {}
+func (*GenerateMemeWithTopicResponse) ProtoMessage() {}
 
-func (x *SendTopicResponse) ProtoReflect() protoreflect.Message {
+func (x *GenerateMemeWithTopicResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -99,26 +99,26 @@ func (x *SendTopicResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SendTopicResponse.ProtoReflect.Descriptor instead.
-func (*SendTopicResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateMemeWithTopicResponse.ProtoReflect.Descriptor instead.
+func (*GenerateMemeWithTopicResponse) Descriptor() ([]byte, []int) {
 	return file_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SendTopicResponse) GetImage() []byte {
+func (x *GenerateMemeWithTopicResponse) GetImage() []byte {
 	if x != nil {
 		return x.Image
 	}
 	return nil
 }
 
-func (x *SendTopicResponse) GetCaption() string {
+func (x *GenerateMemeWithTopicResponse) GetCaption() string {
 	if x != nil {
 		return x.Caption
 	}
 	return ""
 }
 
-func (x *SendTopicResponse) GetMimeType() string {
+func (x *GenerateMemeWithTopicResponse) GetMimeType() string {
 	if x != nil {
 		return x.MimeType
 	}
@@ -129,15 +129,15 @@ var File_service_proto protoreflect.FileDescriptor
 
 const file_service_proto_rawDesc = "" +
 	"\n" +
-	"\rservice.proto\x12\tservicepb\"(\n" +
-	"\x10SendTopicRequest\x12\x14\n" +
-	"\x05topic\x18\x01 \x01(\tR\x05topic\"`\n" +
-	"\x11SendTopicResponse\x12\x14\n" +
+	"\rservice.proto\x12\tservicepb\"4\n" +
+	"\x1cGenerateMemeWithTopicRequest\x12\x14\n" +
+	"\x05topic\x18\x01 \x01(\tR\x05topic\"l\n" +
+	"\x1dGenerateMemeWithTopicResponse\x12\x14\n" +
 	"\x05image\x18\x01 \x01(\fR\x05image\x12\x18\n" +
 	"\acaption\x18\x02 \x01(\tR\acaption\x12\x1b\n" +
-	"\tmime_type\x18\x03 \x01(\tR\bmimeType2`\n" +
-	"\x16AIMemeGeneratorService\x12F\n" +
-	"\tSendTopic\x12\x1b.servicepb.SendTopicRequest\x1a\x1c.servicepb.SendTopicResponseBCZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/protob\x06proto3"
+	"\tmime_type\x18\x03 \x01(\tR\bmimeType2\x84\x01\n" +
+	"\x16AIMemeGeneratorService\x12j\n" +
+	"\x15GenerateMemeWithTopic\x12'.servicepb.GenerateMemeWithTopicRequest\x1a(.servicepb.GenerateMemeWithTopicResponseBCZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/protob\x06proto3"
 
 var (
 	file_service_proto_rawDescOnce sync.Once
@@ -153,12 +153,12 @@ func file_service_proto_rawDescGZIP() []byte {
 
 var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_service_proto_goTypes = []any{
-	(*SendTopicRequest)(nil),  // 0: servicepb.SendTopicRequest
-	(*SendTopicResponse)(nil), // 1: servicepb.SendTopicResponse
+	(*GenerateMemeWithTopicRequest)(nil),  // 0: servicepb.GenerateMemeWithTopicRequest
+	(*GenerateMemeWithTopicResponse)(nil), // 1: servicepb.GenerateMemeWithTopicResponse
 }
 var file_service_proto_depIdxs = []int32{
-	0, // 0: servicepb.AIMemeGeneratorService.SendTopic:input_type -> servicepb.SendTopicRequest
-	1, // 1: servicepb.AIMemeGeneratorService.SendTopic:output_type -> servicepb.SendTopicResponse
+	0, // 0: servicepb.AIMemeGeneratorService.GenerateMemeWithTopic:input_type -> servicepb.GenerateMemeWithTopicRequest
+	1, // 1: servicepb.AIMemeGeneratorService.GenerateMemeWithTopic:output_type -> servicepb.GenerateMemeWithTopicResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

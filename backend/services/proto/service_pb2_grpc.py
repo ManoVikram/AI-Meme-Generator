@@ -34,17 +34,17 @@ class AIMemeGeneratorServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SendTopic = channel.unary_unary(
-                '/servicepb.AIMemeGeneratorService/SendTopic',
-                request_serializer=service__pb2.SendTopicRequest.SerializeToString,
-                response_deserializer=service__pb2.SendTopicResponse.FromString,
+        self.GenerateMemeWithTopic = channel.unary_unary(
+                '/servicepb.AIMemeGeneratorService/GenerateMemeWithTopic',
+                request_serializer=service__pb2.GenerateMemeWithTopicRequest.SerializeToString,
+                response_deserializer=service__pb2.GenerateMemeWithTopicResponse.FromString,
                 _registered_method=True)
 
 
 class AIMemeGeneratorServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def SendTopic(self, request, context):
+    def GenerateMemeWithTopic(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -53,10 +53,10 @@ class AIMemeGeneratorServiceServicer(object):
 
 def add_AIMemeGeneratorServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SendTopic': grpc.unary_unary_rpc_method_handler(
-                    servicer.SendTopic,
-                    request_deserializer=service__pb2.SendTopicRequest.FromString,
-                    response_serializer=service__pb2.SendTopicResponse.SerializeToString,
+            'GenerateMemeWithTopic': grpc.unary_unary_rpc_method_handler(
+                    servicer.GenerateMemeWithTopic,
+                    request_deserializer=service__pb2.GenerateMemeWithTopicRequest.FromString,
+                    response_serializer=service__pb2.GenerateMemeWithTopicResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -70,7 +70,7 @@ class AIMemeGeneratorService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def SendTopic(request,
+    def GenerateMemeWithTopic(request,
             target,
             options=(),
             channel_credentials=None,
@@ -83,9 +83,9 @@ class AIMemeGeneratorService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/servicepb.AIMemeGeneratorService/SendTopic',
-            service__pb2.SendTopicRequest.SerializeToString,
-            service__pb2.SendTopicResponse.FromString,
+            '/servicepb.AIMemeGeneratorService/GenerateMemeWithTopic',
+            service__pb2.GenerateMemeWithTopicRequest.SerializeToString,
+            service__pb2.GenerateMemeWithTopicResponse.FromString,
             options,
             channel_credentials,
             insecure,

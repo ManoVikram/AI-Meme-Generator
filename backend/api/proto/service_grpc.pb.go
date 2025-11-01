@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AIMemeGeneratorService_SendTopic_FullMethodName = "/servicepb.AIMemeGeneratorService/SendTopic"
+	AIMemeGeneratorService_GenerateMemeWithTopic_FullMethodName = "/servicepb.AIMemeGeneratorService/GenerateMemeWithTopic"
 )
 
 // AIMemeGeneratorServiceClient is the client API for AIMemeGeneratorService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AIMemeGeneratorServiceClient interface {
-	SendTopic(ctx context.Context, in *SendTopicRequest, opts ...grpc.CallOption) (*SendTopicResponse, error)
+	GenerateMemeWithTopic(ctx context.Context, in *GenerateMemeWithTopicRequest, opts ...grpc.CallOption) (*GenerateMemeWithTopicResponse, error)
 }
 
 type aIMemeGeneratorServiceClient struct {
@@ -37,10 +37,10 @@ func NewAIMemeGeneratorServiceClient(cc grpc.ClientConnInterface) AIMemeGenerato
 	return &aIMemeGeneratorServiceClient{cc}
 }
 
-func (c *aIMemeGeneratorServiceClient) SendTopic(ctx context.Context, in *SendTopicRequest, opts ...grpc.CallOption) (*SendTopicResponse, error) {
+func (c *aIMemeGeneratorServiceClient) GenerateMemeWithTopic(ctx context.Context, in *GenerateMemeWithTopicRequest, opts ...grpc.CallOption) (*GenerateMemeWithTopicResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SendTopicResponse)
-	err := c.cc.Invoke(ctx, AIMemeGeneratorService_SendTopic_FullMethodName, in, out, cOpts...)
+	out := new(GenerateMemeWithTopicResponse)
+	err := c.cc.Invoke(ctx, AIMemeGeneratorService_GenerateMemeWithTopic_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *aIMemeGeneratorServiceClient) SendTopic(ctx context.Context, in *SendTo
 // All implementations must embed UnimplementedAIMemeGeneratorServiceServer
 // for forward compatibility.
 type AIMemeGeneratorServiceServer interface {
-	SendTopic(context.Context, *SendTopicRequest) (*SendTopicResponse, error)
+	GenerateMemeWithTopic(context.Context, *GenerateMemeWithTopicRequest) (*GenerateMemeWithTopicResponse, error)
 	mustEmbedUnimplementedAIMemeGeneratorServiceServer()
 }
 
@@ -62,8 +62,8 @@ type AIMemeGeneratorServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAIMemeGeneratorServiceServer struct{}
 
-func (UnimplementedAIMemeGeneratorServiceServer) SendTopic(context.Context, *SendTopicRequest) (*SendTopicResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendTopic not implemented")
+func (UnimplementedAIMemeGeneratorServiceServer) GenerateMemeWithTopic(context.Context, *GenerateMemeWithTopicRequest) (*GenerateMemeWithTopicResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateMemeWithTopic not implemented")
 }
 func (UnimplementedAIMemeGeneratorServiceServer) mustEmbedUnimplementedAIMemeGeneratorServiceServer() {
 }
@@ -87,20 +87,20 @@ func RegisterAIMemeGeneratorServiceServer(s grpc.ServiceRegistrar, srv AIMemeGen
 	s.RegisterService(&AIMemeGeneratorService_ServiceDesc, srv)
 }
 
-func _AIMemeGeneratorService_SendTopic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendTopicRequest)
+func _AIMemeGeneratorService_GenerateMemeWithTopic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateMemeWithTopicRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AIMemeGeneratorServiceServer).SendTopic(ctx, in)
+		return srv.(AIMemeGeneratorServiceServer).GenerateMemeWithTopic(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AIMemeGeneratorService_SendTopic_FullMethodName,
+		FullMethod: AIMemeGeneratorService_GenerateMemeWithTopic_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AIMemeGeneratorServiceServer).SendTopic(ctx, req.(*SendTopicRequest))
+		return srv.(AIMemeGeneratorServiceServer).GenerateMemeWithTopic(ctx, req.(*GenerateMemeWithTopicRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -113,8 +113,8 @@ var AIMemeGeneratorService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AIMemeGeneratorServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SendTopic",
-			Handler:    _AIMemeGeneratorService_SendTopic_Handler,
+			MethodName: "GenerateMemeWithTopic",
+			Handler:    _AIMemeGeneratorService_GenerateMemeWithTopic_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

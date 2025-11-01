@@ -4,16 +4,16 @@ package servicepb;
 
 option go_package = "https://github.com/ManoVikram/AI-Meme-Generator/backend/api/proto";
 
-message SendTopicRequest {
+message GenerateMemeWithTopicRequest {
     string topic = 1;
 }
 
-message SendTopicResponse {
+message GenerateMemeWithTopicResponse {
     bytes image = 1;
     string caption = 2;
     string mime_type = 3;
 }
 
 service AIMemeGeneratorService {
-    rpc SendTopic(SendTopicRequest) returns (SendTopicResponse);
+    rpc GenerateMemeWithTopic(GenerateMemeWithTopicRequest) returns (GenerateMemeWithTopicResponse);
 }

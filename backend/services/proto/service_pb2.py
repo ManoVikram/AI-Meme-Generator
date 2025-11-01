@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\tservicepb\"!\n\x10SendTopicRequest\x12\r\n\x05topic\x18\x01 \x01(\t\"F\n\x11SendTopicResponse\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\x0f\n\x07\x63\x61ption\x18\x02 \x01(\t\x12\x11\n\tmime_type\x18\x03 \x01(\t2`\n\x16\x41IMemeGeneratorService\x12\x46\n\tSendTopic\x12\x1b.servicepb.SendTopicRequest\x1a\x1c.servicepb.SendTopicResponseBCZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\tservicepb\"-\n\x1cGenerateMemeWithTopicRequest\x12\r\n\x05topic\x18\x01 \x01(\t\"R\n\x1dGenerateMemeWithTopicResponse\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\x0f\n\x07\x63\x61ption\x18\x02 \x01(\t\x12\x11\n\tmime_type\x18\x03 \x01(\t2\x84\x01\n\x16\x41IMemeGeneratorService\x12j\n\x15GenerateMemeWithTopic\x12\'.servicepb.GenerateMemeWithTopicRequest\x1a(.servicepb.GenerateMemeWithTopicResponseBCZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,10 +32,10 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'service_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/proto'
-  _globals['_SENDTOPICREQUEST']._serialized_start=28
-  _globals['_SENDTOPICREQUEST']._serialized_end=61
-  _globals['_SENDTOPICRESPONSE']._serialized_start=63
-  _globals['_SENDTOPICRESPONSE']._serialized_end=133
-  _globals['_AIMEMEGENERATORSERVICE']._serialized_start=135
-  _globals['_AIMEMEGENERATORSERVICE']._serialized_end=231
+  _globals['_GENERATEMEMEWITHTOPICREQUEST']._serialized_start=28
+  _globals['_GENERATEMEMEWITHTOPICREQUEST']._serialized_end=73
+  _globals['_GENERATEMEMEWITHTOPICRESPONSE']._serialized_start=75
+  _globals['_GENERATEMEMEWITHTOPICRESPONSE']._serialized_end=157
+  _globals['_AIMEMEGENERATORSERVICE']._serialized_start=160
+  _globals['_AIMEMEGENERATORSERVICE']._serialized_end=292
 # @@protoc_insertion_point(module_scope)
