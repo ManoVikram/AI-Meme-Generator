@@ -37,6 +37,8 @@ protoc --proto_path=./proto --go_out=./api/proto --go_opt=paths=source_relative 
 
 ## API Usage
 
+### Request
+
 ```bash
 curl --location 'http://localhost:8080/api/generate' \
 --header 'Content-Type: application/json' \
@@ -45,6 +47,10 @@ curl --location 'http://localhost:8080/api/generate' \
 }'
 ```
 
-## Sample Images Generated
+### Response
 
+**Image**
 ![Sample generated image](/public/generated_image.png)
+
+**Caption**
+"When your evil plans are fueled by coffee breaks and group therapy... Turns out world domination needs a little bit of caffeine and a lot of family bonding!\"
