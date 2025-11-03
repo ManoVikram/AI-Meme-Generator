@@ -50,7 +50,9 @@ curl --location 'http://localhost:8080/api/generate' \
 ### Response
 
 **Image**
+
 ![Sample generated image](/public/generated_image.png)
 
 **Caption**
+
 "When your evil plans are fueled by coffee breaks and group therapy... Turns out world domination needs a little bit of caffeine and a lot of family bonding!\"
