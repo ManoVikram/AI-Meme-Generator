@@ -51,7 +51,7 @@ curl --location 'http://localhost:8080/api/generate' \
 
 **Image**
 
-![Sample generated image](/public/generated_image.png)
+![Sample generated image](/public/generated_image_1.png)
 
 **Caption**
 
