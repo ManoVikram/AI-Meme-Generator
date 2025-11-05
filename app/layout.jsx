@@ -15,8 +15,8 @@ const neueMontreal = localFont({
 })
 
 export const metadata = {
-  title: "AI Meme Generator",
-  description: "Generate hilarious memes with the power of AI",
+  title: "Memelab - AI Meme Generator",
+  description: "Create hilarious memes in seconds with Memelab, the AI-powered meme generator that turns your ideas into shareable content.",
 };
 
 // UI Inspiration - https://www.habito.studio/ | https://www.awwwards.com/sites/habito-studio
