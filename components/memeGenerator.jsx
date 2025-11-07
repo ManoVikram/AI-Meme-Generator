@@ -8,11 +8,13 @@ import { generateMeme } from '@/lib/api/helpers';
 const MemeGenerator = () => {
     const [topic, setTopic] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [memeData, setMemeData] = useState(null);
 
     const handleGenerateMeme = async () => {
         setIsLoading(true)
 
-        await generateMeme(topic)
+        const memeData = await generateMeme(topic)
+        setMemeData(memeData)
 
         setIsLoading(false)
     }
@@ -23,8 +25,16 @@ const MemeGenerator = () => {
                 <div className="flex flex-1 justify-center items-center">
                     <Loading />
                 </div>
+            ) : memeData ? (
+                <div className="relative flex flex-col flex-1 justify-center h-[70vh] w-2/3 items-center gap-6">
+                    <div className="relative h-[50vh] w-full">
+                        <Image src={memeData.image} alt='meme-image' fill className='object-contain' />
+                    </div>
+
+                    <p className="italic text-gray-400 w-2/3 text-center">{memeData.caption}</p>
+                </div>
             ) : (
-                <div className={`flex flex-col flex-1 justify-start items-center gap-10`}>
+                < div className={`flex flex-col flex-1 justify-start items-center gap-10`}>
                     <div className="flex flex-row justify-center items-center w-full">
                         <div className="relative aspect-4/5 w-48 bg-white p-1 rounded-xl">
                             <div className="relative size-full">
@@ -62,7 +72,7 @@ const MemeGenerator = () => {
                     <p>Generate</p>
                 </button>
             </div>
-        </section>
+        </section >
     )
 }
 
