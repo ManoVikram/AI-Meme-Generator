@@ -45,17 +45,17 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
         )
 
         image_base64 = result.data[0].b64_json
-        image_bytes = base64.b64decode(image_base64)
+        # image_bytes = base64.b64decode(image_base64)
 
-        # Step 3 - Return the binary image data
-        return image_bytes
+        # Step 3 - Return the base64 image data
+        return image_base64
 
     def generate_meme_caption(self, image):
         # Step 1 - Initialize OpenAI API client
         client = OpenAI()
 
         # Step 2 - Convert the bytes image to base64 string
-        image_base64 = self.encode_image_to_base64(image)
+        # image_base64 = self.encode_image_to_base64(image)
 
         # Step 3 - Generate a caption for the meme image using the LLM of choice
         response = client.responses.create(
@@ -70,7 +70,7 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
                         },
                         {
                             "type": "input_image",
-                            "image_url": f"data:image/jpeg;base64,{image_base64}"
+                            "image_url": f"data:image/png;base64,{image}"
                         }
                     ]
                 }
@@ -87,16 +87,16 @@ class AIMemeGeneratorService(service_pb2_grpc.AIMemeGeneratorServiceServicer):
         prompt = self.generate_image_prompt(topic=topic)
 
         # Step 2 - Create meme image from prompt
-        image_bytes = self.create_meme_image(prompt=prompt)
+        image_base64 = self.create_meme_image(prompt=prompt)
 
         # Step 3 - Generate meme caption from image
-        caption = self.generate_meme_caption(image=image_bytes)
+        caption = self.generate_meme_caption(image=image_base64)
 
         # Step 4 - Construct and return response
         return service_pb2.GenerateMemeWithTopicResponse(
-            image=image_bytes,
+            image=f"data:image/png;base64,{image_base64}",
             caption=caption,
-            mime_type="image/jpeg"
+            mime_type="image/png"
         )
 
 def serve():

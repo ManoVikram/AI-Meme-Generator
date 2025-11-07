@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\tservicepb\"-\n\x1cGenerateMemeWithTopicRequest\x12\r\n\x05topic\x18\x01 \x01(\t\"R\n\x1dGenerateMemeWithTopicResponse\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\x0f\n\x07\x63\x61ption\x18\x02 \x01(\t\x12\x11\n\tmime_type\x18\x03 \x01(\t2\x84\x01\n\x16\x41IMemeGeneratorService\x12j\n\x15GenerateMemeWithTopic\x12\'.servicepb.GenerateMemeWithTopicRequest\x1a(.servicepb.GenerateMemeWithTopicResponseBCZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\tservicepb\"-\n\x1cGenerateMemeWithTopicRequest\x12\r\n\x05topic\x18\x01 \x01(\t\"R\n\x1dGenerateMemeWithTopicResponse\x12\r\n\x05image\x18\x01 \x01(\t\x12\x0f\n\x07\x63\x61ption\x18\x02 \x01(\t\x12\x11\n\tmime_type\x18\x03 \x01(\t2\x84\x01\n\x16\x41IMemeGeneratorService\x12j\n\x15GenerateMemeWithTopic\x12\'.servicepb.GenerateMemeWithTopicRequest\x1a(.servicepb.GenerateMemeWithTopicResponseBCZAhttps://github.com/ManoVikram/AI-Meme-Generator/backend/api/protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)

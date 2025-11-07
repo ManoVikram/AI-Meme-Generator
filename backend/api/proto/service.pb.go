@@ -67,7 +67,7 @@ func (x *GenerateMemeWithTopicRequest) GetTopic() string {
 
 type GenerateMemeWithTopicResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Image         []byte                 `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
+	Image         string                 `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	Caption       string                 `protobuf:"bytes,2,opt,name=caption,proto3" json:"caption,omitempty"`
 	MimeType      string                 `protobuf:"bytes,3,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -104,11 +104,11 @@ func (*GenerateMemeWithTopicResponse) Descriptor() ([]byte, []int) {
 	return file_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GenerateMemeWithTopicResponse) GetImage() []byte {
+func (x *GenerateMemeWithTopicResponse) GetImage() string {
 	if x != nil {
 		return x.Image
 	}
-	return nil
+	return ""
 }
 
 func (x *GenerateMemeWithTopicResponse) GetCaption() string {
@@ -133,7 +133,7 @@ const file_service_proto_rawDesc = "" +
 	"\x1cGenerateMemeWithTopicRequest\x12\x14\n" +
 	"\x05topic\x18\x01 \x01(\tR\x05topic\"l\n" +
 	"\x1dGenerateMemeWithTopicResponse\x12\x14\n" +
-	"\x05image\x18\x01 \x01(\fR\x05image\x12\x18\n" +
+	"\x05image\x18\x01 \x01(\tR\x05image\x12\x18\n" +
 	"\acaption\x18\x02 \x01(\tR\acaption\x12\x1b\n" +
 	"\tmime_type\x18\x03 \x01(\tR\bmimeType2\x84\x01\n" +
 	"\x16AIMemeGeneratorService\x12j\n" +

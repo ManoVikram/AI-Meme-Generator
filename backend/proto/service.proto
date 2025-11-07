@@ -9,7 +9,7 @@ message GenerateMemeWithTopicRequest {
 }
 
 message GenerateMemeWithTopicResponse {
-    bytes image = 1;
+    string image = 1;
     string caption = 2;
     string mime_type = 3;
 }
