@@ -64,3 +64,5 @@ curl --location 'http://localhost:8080/api/generate' \
 ![Landing Page UI](/public/MemelabsLandingPageUI.png)
 
 ![Meme Generator Page UI](/public/MemelabsMemeGeneratorUI.png)
+
+![Meme Generator Page UI With Meme](/public/MemelabsMemeGeneratorUIWithMeme.png)
