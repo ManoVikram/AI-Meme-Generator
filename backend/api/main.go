@@ -19,7 +19,10 @@ func main() {
 	if grpcAddress == "" {
 		grpcAddress = "localhost:50051"
 	}
-	connection, err := grpc.NewClient(grpcAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	connection, err := grpc.NewClient(grpcAddress, grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithDefaultCallOptions(
+		grpc.MaxCallRecvMsgSize(50*1024*1024), // 50MB
+		grpc.MaxCallSendMsgSize(50*1024*1024),
+	))
 	if err != nil {
 		log.Fatalf("Failed to connect to gRPC server: %v", err)
 	}

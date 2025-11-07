@@ -103,7 +103,12 @@ def serve():
     load_dotenv()
     assert os.getenv("OPENAI_API_KEY"), "OPENAI_API_KEY environment variable not set in the environment variables."
 
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    MAX_MESSAGE_LENGTH = 50 * 1024 * 1024  # 50MB
+
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10), options=[
+        ('grpc.max_send_message_length', MAX_MESSAGE_LENGTH),
+        ('grpc.max_receive_message_length', MAX_MESSAGE_LENGTH),
+    ])
     service_pb2_grpc.add_AIMemeGeneratorServiceServicer_to_server(AIMemeGeneratorService(), server)
 
     server.add_insecure_port("[::]:50051")
