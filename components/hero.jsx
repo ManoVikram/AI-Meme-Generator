@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import UnderlinedTextNavigationButton from './underlinedTextNavigationButton'
 
 const Hero = () => {
     return (
@@ -27,25 +28,9 @@ const Hero = () => {
                     <h1 className=' text-8xl font-bold'>WE MAKE MEMES THAT HIT DIFFERENT</h1>
 
                     <div className="flex flex-row justify-between items-center w-full">
-                        <button className='flex flex-col gap-1 cursor-pointer'>
-                            <div className="flex flex-row justify-between items-center gap-2">
-                                <p>About us</p>
+                        <UnderlinedTextNavigationButton text="About us" />
 
-                                <Image src="/arrow-right.svg" alt='arrow-right' height={16} width={30} />
-                            </div>
-
-                            <div className="h-0.5 w-full bg-black" />
-                        </button>
-
-                        <button className='flex flex-col gap-1 cursor-pointer'>
-                            <div className="flex flex-row justify-between items-center gap-2">
-                                <p>Generate meme</p>
-
-                                <Image src="/arrow-right.svg" alt='arrow-right' height={16} width={30} />
-                            </div>
-
-                            <div className="h-0.5 w-full bg-black" />
-                        </button>
+                        <UnderlinedTextNavigationButton text="Generate meme" navigationRoutePath="/generate-meme" />
                     </div>
                 </div>
             </div>
