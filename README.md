@@ -67,4 +67,5 @@ curl --location 'http://localhost:8080/api/generate' \
 
 ![Meme Generator Page UI With Meme](/public/MemelabsMemeGeneratorUIWithMeme.png)
 
-![Meme Generator Walkthrough Video](/public/MemelabMemeGenerationUIVideoWalkthrough.mp4)
+
+https://github.com/user-attachments/assets/df0568bb-a169-475d-b946-d813a0b5c35f
