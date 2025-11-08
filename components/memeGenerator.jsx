@@ -19,6 +19,17 @@ const MemeGenerator = () => {
         setIsLoading(false)
     }
 
+    const copyMemeToClipboard = async () => {
+        if (memeData && memeData.image) {
+            const memeImage = await fetch(memeData.image)
+            const memeBlob = await memeImage.blob()
+
+            await navigator.clipboard.write([new ClipboardItem({
+                [memeBlob.type]: memeBlob
+            })])
+        }
+    }
+
     return (
         <section className='flex flex-col flex-1 justify-start items-center h-full w-full gap-10 py-10'>
             {isLoading ? (
@@ -27,8 +38,8 @@ const MemeGenerator = () => {
                 </div>
             ) : memeData ? (
                 <div className="relative flex flex-col flex-1 justify-center h-[70vh] w-2/3 items-center gap-6">
-                    <div className="relative h-[50vh] w-full">
-                        <Image src={memeData.image} alt='meme-image' fill className='object-contain' />
+                    <div className="flex justify-center items-center max-h-[50vh] w-full pointer-events-none">
+                        <Image src={memeData.image} alt='meme-image' height={1024} width={1024} className='object-contain max-h-[50vh] w-auto hover:scale-[1.02] hover:drop-shadow-xl transition-all duration-200 cursor-pointer pointer-events-auto' onClick={copyMemeToClipboard} />
                     </div>
 
                     <p className="italic text-gray-400 w-2/3 text-center">{memeData.caption}</p>
