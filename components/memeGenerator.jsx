@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import React, { useState } from 'react'
-import Loading from './loading';
 import { generateMeme } from '@/lib/api/helpers';
+import Loading from './loading';
 
 const MemeGenerator = () => {
     const [topic, setTopic] = useState("");
