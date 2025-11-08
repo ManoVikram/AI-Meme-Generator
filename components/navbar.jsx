@@ -12,6 +12,7 @@ const Navbar = () => {
                 <h4 className='text-3xl cursor-pointer' onClick={() => router.push("/")}>Memelab</h4>
 
                 <ul className='flex flex-row gap-14 text-lg'>
+                    <li className='cursor-pointer' onClick={() => router.push('/')}>Home</li>
                     <li className='cursor-pointer' onClick={() => router.push('/generate-meme')}>Create</li>
                     <li className='cursor-pointer'>Services</li>
                     <li className='cursor-pointer'>About</li>

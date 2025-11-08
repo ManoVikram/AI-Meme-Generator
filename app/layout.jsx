@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import PageTransition from "@/components/pageTransition";
 
 const neueMontreal = localFont({
   src: [
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
       <body className={`${neueMontreal.variable} antialiased flex flex-col min-h-dvh px-12`}>
         <Navbar />
 
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   );
