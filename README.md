@@ -1,4 +1,4 @@
-# AI Meme Generator
+# Memelab - AI Meme Generator
 
 ## Install the Necessary Packages
 
